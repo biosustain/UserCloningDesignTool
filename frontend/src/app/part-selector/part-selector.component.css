@@ -1,0 +1,28 @@
+mat-card {
+    min-width: 400px;
+}
+
+mat-toolbar {
+    width: calc(100% + 48px);
+    margin: -24px 0 24px -24px;
+    top: -24px;
+    position: relative;
+}
+
+mat-list-item:hover {
+    background-color: lightblue;
+}
+
+.right-button {
+    float: right;
+}
+
+.add-button {
+    position: absolute;
+    top: 42px;
+    left: 80%;
+}
+
+.reorder_icon {
+    cursor: move;
+}

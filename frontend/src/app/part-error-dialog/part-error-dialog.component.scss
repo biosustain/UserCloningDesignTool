@@ -1,0 +1,21 @@
+/* Structure */
+.container {
+  display: flex;
+  flex-direction: column;
+  max-height: 500px;
+  min-width: 300px;
+  position: relative;
+}
+
+.header {
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  padding-left: 24px;
+  font-size: 20px;
+}
+
+.table {
+  overflow: auto;
+  min-height: 300px;
+}

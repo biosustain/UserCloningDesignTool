@@ -1,0 +1,35 @@
+<div fxLayout='row' fxLayoutAlign='center'>
+  <div fxFlex='75'>
+    <td-layout-card-over>
+      <h1 matDialogTitle class="ice-form">Ice Login Information</h1>
+      <div *ngIf='credentialsForm'>
+        <form [formGroup]='credentialsForm'
+          class="ice-form">
+          <mat-form-field>
+            <input matInput
+              formControlName='ice_username'
+              placeholder="Ice Login Name" 
+              type="text"
+              autocomplete="off">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput
+              formControlName='ice_password'
+              placeholder="Ice Password" 
+              type="password"
+              autocomplete="off">
+          </mat-form-field>
+          <mat-error *ngIf="showError">
+            Credentials or password incorrect. Please try again.
+          </mat-error>
+        </form>
+        <button
+          mat-button
+          mat-dialog-actions
+          (click)='updateIceCredentials()'>
+          Update
+        </button>
+      </div>
+    </td-layout-card-over>
+  </div>
+</div>

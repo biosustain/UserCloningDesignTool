@@ -1,0 +1,8 @@
+.card {
+    outline: black;
+    box-shadow: 1px 1px 0.5px grey;
+}
+
+.card-header {
+    background-color: #F8F8F8;
+}

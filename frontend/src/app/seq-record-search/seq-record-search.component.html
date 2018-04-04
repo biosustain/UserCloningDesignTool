@@ -1,0 +1,18 @@
+<div id="search-component" class="panel panel-default">
+  <div class="panel-header">
+    <h2>Search sequence records</h2>
+  </div>
+  <div class="panel-body">
+    <input #searchBox 
+      id="search-box"
+      (keyup)="search(searchBox.value)"
+      class="form-control"
+      />
+    <br>
+    <ul class="list-group active">
+      <li *ngFor="let seq of seqrecords | async" (click)="searchClick(seq)" class="search-result list-group-item" data-toggle="pill">
+          {{seq.name}}
+      </li>
+    </ul>
+  </div>
+</div>

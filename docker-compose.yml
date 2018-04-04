@@ -1,0 +1,49 @@
+version: '3'
+
+services:
+    backend:
+        # restart: always
+        build: ./backend
+        volumes:
+            - backend:/var/www/server
+        entrypoint: [/docker-entrypoint.sh]
+        environment:
+            - DJANGO_SETTINGS_MODULE=user_primer_server.settings.docker
+        depends_on:
+            - db
+
+    frontend:
+        # restart: always
+        build: ./frontend
+        volumes:
+            - frontend:/var/www/client
+        command:
+            ng build --watch
+        depends_on:
+            - backend
+
+    nginx:
+        image: ravnen/user_primer_nginx
+        # build: ./nginx
+        ports:
+            - "8008:80"
+        volumes:
+            - frontend:/var/www/client
+            - backend:/var/www/server
+        depends_on:
+            - frontend
+            - backend
+    db:
+        image: postgres:latest
+        hostname: db
+        environment:
+            - POSTGRES_USER=postgres
+            - POSTGRES_DB=postgres
+    redis:
+        image: 'redis:latest'
+
+volumes:
+  frontend:
+  backend:
+  user_primer_server:
+  user_primer_client:

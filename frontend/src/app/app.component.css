@@ -1,0 +1,13 @@
+/*html, body, material-app, mat-sidenav-container, .sidenav-content {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+mat-sidenav {
+  width: 200px;
+}*/
+
+.spacer {
+  flex: 1 1 auto;
+}

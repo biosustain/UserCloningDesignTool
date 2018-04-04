@@ -1,0 +1,74 @@
+<div fxLayout='row' fxLayoutAlign='center'>
+  <div fxFlex='75'>
+    <div fxLayout="row" fxLayoutAlign="space-around stretch" *ngIf="project">
+      <mat-card fxFlex="50">
+        <mat-toolbar color="primary">
+          <span>Settings</span>
+        </mat-toolbar>
+        <mat-card-content>
+          <app-amuser-settings
+            [settings]="newProjectForm.controls.amusercloning">
+          </app-amuser-settings>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card fxFlex="50">
+        <mat-toolbar color="primary">
+          <span>Parts</span>
+        </mat-toolbar>
+        <mat-card-content>
+          <app-part-selector
+            #partSelector
+            [PartForm]="newProjectForm.controls.parts">
+          </app-part-selector>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button
+                color="primary"
+                (click)="partSelector.addPart()">
+                Add part
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+    <br>
+    <!-- TODO: Add loader when changing project -->
+    <div fxLayout="row" fxLayoutAlign="space-around stretch" *ngIf="project">
+      <mat-card fxFlex="100">
+        <mat-toolbar color="primary">
+          <span>Results</span>
+        </mat-toolbar>
+        <mat-card-content>
+
+        <!-- BUG: report and genbank overflows boundary of the card -->
+          <mat-tab-group [selectedIndex]="activeTab">            
+            <mat-tab label="Report">
+              <app-primer-detail 
+                [primers]='project.report.primers'>
+              </app-primer-detail>
+            </mat-tab>
+
+            <mat-tab 
+              label="Files">
+              <button mat-button
+                (click)='downloadCsv()'>
+                Download Csv
+              </button>
+              <button mat-button
+                (click)='downloadGenbank()'>
+                Download Genbank
+              </button>
+            </mat-tab>
+            <mat-tab 
+              label="Visualisation">
+              <app-project-visualizer
+                [project]="project">
+                
+              </app-project-visualizer>
+            </mat-tab>
+          </mat-tab-group>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

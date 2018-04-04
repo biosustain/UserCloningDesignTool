@@ -1,0 +1,61 @@
+<div fxLayout='row' fxLayoutAlign='center'>
+  <div fxFlex='75'>
+    <td-layout-card-over>
+      <mat-tab-group>
+        <mat-tab label="Projects">
+          <div layout="row" layout-align="start start" class="pad-left-sm pad-right-sm">
+            <div layout="column" layout-align="center start">
+              <span class="md-title">Available projects</span>
+              <span class="md-body-1">{{selectedProjects.length}} project(s) selected</span>
+            </div>
+            <span class="spacer"></span>
+            <div layout="row">
+              <td-search-box #searchBox placeholder="Search here" (searchDebounce)="searchProjects($event)" flex>
+              </td-search-box>
+              <button mat-button
+                (click)="downloadProjectCsv()"
+                [disabled]="!canDownload()">
+                <mat-icon>
+                  file_download
+                </mat-icon>
+              </button>
+            </div>
+          </div>
+          <mat-divider></mat-divider>
+          <app-project-table
+            [projectObservable]="projectObservable"
+            (projectObservableChange)='projectChange($event)'>
+          </app-project-table>
+          <td-paging-bar #pagingBar [pageSize]="[5, 10, 15, 20]" [total]="filteredTotal" (change)="page($event)">
+            <span td-paging-bar-label hide-xs>Row per page:</span>
+            {{pagingBar.range}} <span hide-xs>of {{pagingBar.total}}</span>
+          </td-paging-bar>
+        </mat-tab>
+        <mat-tab label='Combinatorial'>
+          <div layout="row" layout-align="start start" class="pad-left-sm pad-right-sm">
+            <div layout="column" layout-align="center start">
+              <span class="md-title">Available combinatorial projects</span>
+              <span class="md-body-1">{{selectedCombinatorials.length}} combinatorial project(s) selected</span>
+            </div>
+            <span class="spacer"></span>
+            <div layout="row">
+              <td-search-box #searchBox placeholder="Search here" (searchDebounce)="searchCombinatorial($event)" flex>
+              </td-search-box>
+              <!-- <button mat-button
+                (click)="downloadCsv()"
+                [disabled]="!canDownload()">
+                <mat-icon>
+                  file_download
+                </mat-icon>
+              </button> -->
+            </div>
+          </div>
+          <app-combinatorial-table
+            [combinatorialObservable]='combinatorialObservable'
+            (combinatorialObservableChange)='combinatorialChange($event)'>
+          </app-combinatorial-table>
+        </mat-tab>
+      </mat-tab-group>
+    </td-layout-card-over>
+  </div>
+</div>

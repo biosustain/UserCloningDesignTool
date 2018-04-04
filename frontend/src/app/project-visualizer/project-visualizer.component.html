@@ -1,0 +1,5 @@
+<iframe #frame id='iframeId' [src]="url | safe" (load)="resize($event)" frameborder="0">
+  <p> <a [href]="url | safe">
+    Click if vector viewer doesn't load
+  </a> </p>
+</iframe>

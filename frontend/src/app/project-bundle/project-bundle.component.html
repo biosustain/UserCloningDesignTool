@@ -1,0 +1,106 @@
+<div fxLayout='row' fxLayoutAlign='center'>
+  <div fxFlex='75'>
+    <td-layout-card-over cardTitle="Create several new projects">
+      <!-- BUG: the labels for the stepper make a linebreak which they shouldn't -->
+      <td-steps mode='horizontal'>
+        <!-- BUG: Description isn't updated correctly when changing it after combination function has run -->
+        <td-step #step1 
+          label="General information"
+          sublabel="Give the project a name and a description"
+          [active]="activePanel===0"
+          [state]="stateStep[0]">
+          <form
+            [formGroup]="newProjectForm">
+            <mat-form-field>
+              <input matInput
+                formControlName="name"
+                type="text"
+                placeholder="Basename">
+            </mat-form-field>
+            <small
+              *ngIf="!newProjectForm.get('name').valid && 
+                     (newProjectForm.get('name').dirty ||
+                      newProjectForm.get('name').touched)"
+              class="text-danger">
+                Name is required (2 to 46 characters).
+            </small>
+            <br>
+            <mat-form-field>
+              <textarea matInput
+                formControlName="description"
+                type="text"
+                placeholder="Project description (optional)"></textarea>
+            </mat-form-field>
+            <ng-template td-step-actions>
+              <button mat-raised-button
+                color="primary"
+                [disabled]="!firstTabValid()"
+                (click)="step2.open(); toggleState(0)">Next</button>
+            </ng-template>
+          </form>
+        </td-step>
+
+        <td-step #step2
+          label="Parts"
+          sublabel="Pick some parts from the ICE database"
+          [active]="this.activePanel===1"
+          [state]="stateStep[1]"
+          [disabled]="!firstTabValid()">
+          <form [formGroup]="newProjectForm">
+            <app-part-multi-selector
+              [partArrs]='newProjectForm.controls.parts'>
+            </app-part-multi-selector>
+          </form>
+
+          <ng-template td-step-actions>
+            <button mat-raised-button
+              color="primary" (click)="addColumn($event)">Add column</button>
+            <button mat-raised-button
+              color="primary"
+              [disabled]="!secondTabValid()"
+              (click)="step3.open(); toggleState(1)">Next</button>
+          </ng-template>
+        </td-step>
+
+        <td-step #step3
+          label="Settings"
+          sublabel="Set the settings that Amuser will use to create the primers"
+          [active]="this.activePanel===2"
+          [state]="stateStep[2]"
+          [disabled]="!secondTabValid()">
+          <app-amuser-settings 
+            [settings]="newProjectForm.controls.amusercloning">
+          </app-amuser-settings>
+          <ng-template td-step-actions>
+            <button mat-raised-button
+              color="primary" 
+              [disabled]="!thirdTabValid()"
+              (click)="step4.open(); toggleState(2)">Next</button>
+          </ng-template>
+        </td-step>
+
+        <td-step #step4
+          label="Review and submit"
+          sublabel="One last check to confirm everything is as you want it"
+          [active]="this.activePanel===3"
+          [state]="stateStep[3]"
+          [disabled]="!thirdTabValid()">
+          <div
+            fxLayout='row' 
+            fxLayoutAlign="start"
+            fxLayoutGap="10px"
+            fxLayoutWrap>
+          </div>
+          <ng-template td-step-actions>
+            <button mat-raised-button
+              color="primary" 
+              [disabled]="!thirdTabValid()"
+              (click)="submit()">
+              Submit
+            </button>
+          </ng-template>
+        </td-step>
+      </td-steps>
+    </td-layout-card-over>
+  </div>
+</div>

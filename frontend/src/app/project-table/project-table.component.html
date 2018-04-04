@@ -1,0 +1,70 @@
+<div class="mat-table-container" title>
+  <table td-data-table>
+    <th td-data-table-column class="mat-checkbox-column">
+      <mat-checkbox
+        #checkBoxAll
+        [disabled]="!hasData"
+        [indeterminate]="isAnySelected() && !isAllSelected()"
+        [checked]="isAllSelected() && hasData"
+        (keyup.enter)="selectAll(checkBoxAll.checked)"
+        (keyup.space)="selectAll(checkBoxAll.checked)"
+        (keydown.space)="blockEvent($event)"
+        (click)="selectAll(checkBoxAll.checked)">
+      </mat-checkbox>
+    </th>
+    <th td-data-table-column
+      *ngFor="let column of columns"
+      [name]="column.name">
+      <span [matTooltip]="column.tooltip">{{column.label}}</span>
+    </th>
+    <tr 
+      td-data-table-row
+      *ngFor='let project of projectObservable | async'>
+      <td td-data-table-cell class="mat-checkbox-cell">
+        <mat-pseudo-checkbox
+          [state]='isProjectSelected(project) ? "checked" : "unchecked"'
+          (click)='select(project)'>
+        </mat-pseudo-checkbox>
+      </td>
+      <td td-data-table-cell>
+        {{project.name}}
+        <span
+          class="right-button"
+          *ngIf="project.errors.length > 0">
+          <button mat-button matTooltip='Errors found. Click to view.' (click)='openErrorDialog(project)'>
+            <mat-icon color="warn">
+              warning
+            </mat-icon>
+          </button>
+        </span>
+      </td>
+      <td td-data-table-cell>
+        <div *ngIf='project.description; else ElseBlock'>
+          <span>
+            {{project.description}}
+          </span>
+        </div>
+        <ng-template #ElseBlock>
+          <span class="md-body-1">
+            No description
+          </span>
+        </ng-template>
+      </td>
+      <td td-data-table-cell>
+        <span class="md-body-1">
+          {{project.parts.length}}
+        </span>
+      </td>
+      <td td-data-table-cell>
+        <span>
+          <button mat-button
+            [routerLink]="['/projects/'+project.id]">
+            <mat-icon>
+              mode_edit
+            </mat-icon>
+          </button>
+        </span>
+      </td>
+    </tr>
+  </table>
+</div>

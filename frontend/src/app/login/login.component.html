@@ -1,0 +1,26 @@
+<h1 matDialogTitle>Login</h1>
+<form
+  (submit)='login()'
+  [formGroup]='credentialsForm'>
+  <mat-form-field>
+    <input matInput
+      formControlName='username'
+      placeholder="DTU Credentials" 
+      type="text">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput
+      formControlName='password'
+      placeholder="Password" 
+      type="password">
+  </mat-form-field>
+  <mat-error *ngIf="showError">
+    Credentials or password incorrect. Please try again.
+  </mat-error>
+  <button
+    mat-button
+    mat-dialog-actions
+    type='submit'>
+    Login
+  </button>
+</form>

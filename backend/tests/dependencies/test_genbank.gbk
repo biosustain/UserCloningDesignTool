@@ -1,0 +1,56 @@
+LOCUS       CRURPS14                 535 bp    mRNA    linear   ROD 10-JUN-1993
+DEFINITION  Chinese hamster ovary (CHO) ribosomal protein S14 mRNA, complete
+            cds.
+ACCESSION   M11241
+VERSION     M11241.1  GI:191197
+KEYWORDS    ribosomal protein.
+SOURCE      Cricetulus griseus (Chinese hamster)
+  ORGANISM  Cricetulus griseus
+            Eukaryota; Metazoa; Chordata; Craniata; Vertebrata; Euteleostomi;
+            Mammalia; Eutheria; Euarchontoglires; Glires; Rodentia;
+            Sciurognathi; Muroidea; Cricetidae; Cricetinae; Cricetulus.
+REFERENCE   1  (bases 1 to 535)
+  AUTHORS   Rhoads,D.D. and Roufa,D.J.
+  TITLE     Emetine resistance of Chinese hamster cells: structures of
+            wild-type and mutant ribosomal protein S14 mRNAs
+  JOURNAL   Mol. Cell. Biol. 5 (7), 1655-1659 (1985)
+   PUBMED   3839563
+COMMENT     Original source text: Chinese hamster ovary cell, cDNA to mRNA,
+            clone pCS14-11.
+            Draft entry of sequence in [1] kindly provided by Rhoads,D.D. and
+            Roufa,D.J.
+            There are two variations (annotated in the FEATURES TABLE) between
+            Chinese hamster lung cell cDNA and Chinese hamster ovary cell cDNA.
+FEATURES             Location/Qualifiers
+     source          1..535
+                     /organism="Cricetulus griseus"
+                     /mol_type="mRNA"
+                     /db_xref="taxon:10029"
+     mRNA            <1..535
+                     /product="RPS14 mRNA"
+     CDS             31..486
+                     /note="ribosomal protein S14"
+                     /codon_start=1
+                     /protein_id="AAA37016.1"
+                     /translation="MAPRKGKEKKEEQVISLGPQVAEGENVFGVCHIFASFNDTFVHV
+                     TDLSGKETICRVTGGMKVKADRDESSPYAAMLAAQDVAQRCKELGITALHIKLRATGG
+                     NRTKTPGPGAQSALRALARSGMKIGRIEDVTPIPSDSTRRKGGRRGRRL"
+     variation       320
+                     /note="t in CHO; c in CHL"
+     variation       411
+                     /note="g in CHO; a in CHL"
+     variation       475
+                     /note="c in wt; t in Emr-2"
+     variation       479
+                     /note="g in wt; a in Emr-2-3"
+ORIGIN      166 bp upstream of Sau3A site.
+        1 ggtggagaag tctggagacg acgttcagaa atggcacctc gcaagggaaa ggaaaagaag
+       61 gaagaacagg tcatcagcct cggacctcaa gtggctgaag gagagaatgt atttggtgtc
+      121 tgccacattt ttgcatcttt caacgacacc tttgtccatg ttactgatct ttctggcaag
+      181 gaaactatct gccgggtgac tggtggaatg aaggtaaagg ctgacagaga tgagtcttct
+      241 ccttatgcag ccatgttggc tgcccaggat gttgcccaga ggtgcaagga gctgggcatc
+      301 actgccctgc atatcaaact ccgagctacg ggaggaaaca ggaccaagac ccctggacct
+      361 ggagcccagt cagccctcag agctcttgct cgttcaggga tgaagattgg gcggattgag
+      421 gatgtcaccc ccatcccctc tgacagcacc cgaaggaagg gtggtcgtcg tggtcgccgt
+      481 ctgtgaacag gacttctcaa attattttct gttaataaat tgctttgtat tgtat
+//

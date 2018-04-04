@@ -1,0 +1,51 @@
+<!-- <div class="row">
+  <div class="col-md-2">
+  </div>
+  <div class="col-md-8">
+    <div class="app-content">
+  
+    <div class="row">
+       <div class="col-md-6">
+        <app-seq-record-search 
+          (searchClickEvent)="searchClickSeq($event)">
+        </app-seq-record-search>
+      </div>
+      <div class="col-md-12">
+        <app-part-search
+          (searchClickEvent)="searchClickPart($event)">
+        </app-part-search>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 panel panel-default">
+        <div class="panel-header">
+          <h2>Create new part</h2>
+        </div>
+        <div class="panel-body">
+          <app-part-uploader
+            [(selectedPart)]="selectedPart">
+          </app-part-uploader>
+          
+          <app-sequence-selector 
+            [seqRecord]="selectedSeqRecord"
+            [part]="selectedPart">
+          </app-sequence-selector>        
+        </div>
+  
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Upload new genbank files</h2>
+        <app-seq-record-uploader (sendNotification)=updateList($event)></app-seq-record-uploader>
+      </div>
+    </div>
+
+    </div>
+  </div>
+  <div class="col-md-2">
+  </div>
+</div>
+ -->

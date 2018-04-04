@@ -1,0 +1,70 @@
+<!-- TODO: Replace with expansion panel -->
+<mat-card *ngIf="project">
+  <div class="expContainer"> 
+    <td-expansion-panel 
+      (expanded)="expanded = !expanded"
+      (collapsed)="expanded = !expanded">
+      <!-- TODO: Make it more obvious that the header can be clicked -->
+      <ng-template td-expansion-panel-header>
+        <mat-toolbar color="primary">
+          <span class="project-header">
+            {{project.name}}
+          </span>
+          <span class="spacer"></span>
+          <div *ngIf="!expanded; else elseblock">
+            <mat-icon>expand_more</mat-icon>
+          </div>
+          <ng-template #elseblock>
+            <mat-icon>expand_less</mat-icon>
+          </ng-template>
+        </mat-toolbar>
+      </ng-template>
+      <td-expansion-summary>
+        <div fxLayout='row' fxLayoutAlign='start center'>
+          <span class="md-subhead" fxFlex="40">
+            Description
+          </span>
+          <span fxFlex="5" class="icon-spacer">
+            <mat-icon>chevron_right</mat-icon>
+          </span>
+          <span  class="md-subhead" fxFlex>
+            {{project.description}}
+          </span>
+        </div>
+        <div fxLayout='row' fxLayoutAlign='start center'>
+          <span class="md-subhead" fxFlex="40">
+            Number of parts
+          </span>
+          <span fxFlex="5" class="icon-spacer">
+            <mat-icon>chevron_right</mat-icon>
+          </span>
+          <span class="md-subhead" fxFlex>
+            {{project.parts.length}}
+          </span>
+        </div>
+      </td-expansion-summary>
+      <mat-list>
+        <h3 matSubheader>Some title</h3>
+        <mat-list-item>
+          <mat-icon>
+            description
+          </mat-icon>
+          {{project.description}}
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <h3 matSubheader>Parts</h3>
+        <mat-list-item *ngFor="let part of project.parts">
+          {{part.name}}
+        </mat-list-item>
+      </mat-list>
+    </td-expansion-panel>
+  </div>
+
+  <!-- TODO: add functionality to delete button -->
+  <!-- TODO: add edit button or make card editable -->
+  <mat-card-actions>
+    <button mat-button *ngIf="project.id" [routerLink]="['/projects/'+project.id]">Select</button>
+    <button mat-button (click)="delete_project">Delete</button>
+    <mat-checkbox [(ngModel)]="selected"></mat-checkbox>
+  </mat-card-actions>
+</mat-card>

@@ -1,0 +1,40 @@
+<div 
+  fxLayout="row"
+  fxLayoutAlign='center'>
+  <mat-card fxFlex="35">
+    <mat-form-field
+      class="project_search_container">
+      <input
+        matInput
+        #searchBox 
+        id="search-box"
+        placeholder="Search projects" 
+        (keyup)="search(searchBox.value)"
+        class="form-control"
+        />
+    </mat-form-field>
+    <mat-card-actions>
+      <button mat-button (click)='downloadCsv()'>test csv download</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+
+
+<div
+  fxLayout='row'
+  fxLayoutAlign="center">
+  <div
+    fxFlex="98"
+    fxLayout='row' 
+    fxLayoutAlign="start start"
+    fxLayoutGap="8px"
+    fxLayoutWrap>
+    <div
+      *ngFor="let project of projects | async">
+      <app-project-card
+        [project]="project" 
+        (projectChange)='changeCsvList($event)'>
+      </app-project-card>
+    </div>
+  </div>
+</div>

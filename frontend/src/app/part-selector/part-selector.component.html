@@ -1,0 +1,50 @@
+<!-- TODO: focus on added part input -->
+<mat-list>
+  <h2 matSubheader>Selected Parts</h2>
+  <!-- BUG: When dragging a part, the list element appears in top toolbar -->
+  <!-- TODO: Add a shadow element when dragging -->
+  <div [dragula]="'part-bag'" [dragulaModel]='dragableForm'>
+    <mat-list-item *ngFor="let part of dragableForm.fa.controls; let i = index">
+      <mat-icon class="reorder_icon">
+        reorder
+      </mat-icon>
+      <span>
+        <button mat-button (click)="removePart(i)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </span>
+      <!-- TODO: change to lazy evaluation of autocomplete so it doesn't send a search query for every single part when an input field is in focus -->
+      <mat-form-field>
+        <input 
+          type="text"
+          matInput
+          #searchBox 
+          [matAutocomplete]="auto"
+          [formControl]="part.controls.name"
+          (keyup)="search(searchBox.value)">
+      </mat-form-field>
+
+
+      <!-- TODO: Consider changing to covalent stacked chips with autocomplete -->
+      <span
+        class="right-button"
+        *ngIf="!part.controls.errors.valid">
+        <button mat-button matTooltip='Errors found. Click to view.' (click)='openErrorDialog(part)'>
+          <mat-icon color="warn">
+            warning
+          </mat-icon>
+        </button>
+      </span>
+      <!-- This can't be moved outside the loop as it will have severe bugs with dragula -->
+      <!-- NOTE: Recheck for new functionality when Material is updated -->
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option 
+          *ngFor="let icePart of searchParts | async" 
+          (click)="selectPart(part, icePart)" 
+          [value]="icePart.name">
+            {{ icePart.name }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-list-item>
+  </div>
+</mat-list>

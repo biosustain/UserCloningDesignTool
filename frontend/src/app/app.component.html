@@ -1,0 +1,56 @@
+<mat-sidenav-container fullscreen>
+  <mat-sidenav #sidenav class="sidenav" opened="false">
+    <mat-toolbar color="primary">
+      Where to?
+    </mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item (click)="sidenav.close()" routerLink="/">Frontpage</a>
+      <a mat-list-item (click)="sidenav.close()" routerLink="/browse">Browse existing</a>
+      <a mat-list-item (click)="sidenav.close()" routerLink="/new_project">Create single new</a>
+      <a mat-list-item (click)="sidenav.close()" routerLink="/combinatorial">Create several new</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <div class="sidenav-content">
+    <mat-toolbar color="primary">
+      <button mat-icon-button (click)="sidenav.open()">
+        <mat-icon>menu</mat-icon>
+      </button>
+
+      <span>Primer Suggestion</span>
+
+      <span class="spacer"></span>
+
+      <div *ngIf='loggedIn(); else notLoggedInBlock'>
+        <button mat-button (click)="logout()">Log out</button>
+      </div>
+      <ng-template #notLoggedInBlock>
+        <button mat-button (click)="openLoginDialog()">Log in</button>
+      </ng-template>
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+
+      <!-- TODO: add the menu options for dark/high contrast -->
+      <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="/user_settings">
+        <mat-icon>dialpad</mat-icon>
+        <span>User Settings</span>
+      </button>
+      <button mat-menu-item disabled>
+        <mat-icon>voicemail</mat-icon>
+        <span>Option 2</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>notifications_off</mat-icon>
+        <span>Option 3</span>
+      </button>
+      </mat-menu>
+    </mat-toolbar>
+    <br>
+    <div fxLayout='row'>
+      <div fxFlex='100'>
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</mat-sidenav-container>

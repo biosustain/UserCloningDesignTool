@@ -1,0 +1,15 @@
+@import '~@angular/material/theming';
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+mat-card {
+  mat-toolbar {
+    span {
+      color: white;
+    }
+  }
+}
+
+.welcome-message {
+  margin: 0 12px 0 12px;
+  height: auto;
+}

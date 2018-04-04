@@ -1,0 +1,81 @@
+<!-- TODO: Move settings to card -->
+<form [formGroup]="settings">
+  <label>Target temperature</label><br>
+  <mat-radio-group (change)="toggle($event)" formControlName="temperature_option">
+    <mat-radio-button value="none">
+      None
+    </mat-radio-button>
+    <mat-icon
+      matTooltip="Do not optimise towards a target temperature"
+      class="material-icons"
+      >
+      info
+    </mat-icon>
+    <br>
+    <mat-radio-button value="eq">
+      Shared
+    </mat-radio-button>
+    <mat-icon 
+      matTooltip="Try to find similar melting temperature for all primers"
+      class="material-icons">
+      info
+    </mat-icon>
+    <br>
+    <mat-radio-button value="manual">
+      Manually
+    </mat-radio-button>
+    <mat-icon 
+      matTooltip="Manually set the target melting temperature"
+      class="material-icons">
+      info
+    </mat-icon>
+    <br><br>
+  </mat-radio-group>
+  <mat-form-field>
+    <input matInput
+      formControlName="melting_temperature"
+      type="number"
+      placeholder="Melting Temperature"
+      >
+    <mat-hint
+      align="start"
+      [ngStyle]="{'color': 'red'}"
+      *ngIf="settings.controls.melting_temperature.errors">
+      Value has to in range 40 to 72 degrees
+    </mat-hint>
+  </mat-form-field>
+  <br><br>
+  <mat-form-field>
+    <input matInput
+      formControlName="primer_concentration"
+      type="number"
+      placeholder="Primer Concentration (μM)"
+      >
+      <mat-hint
+      align="start"
+      [ngStyle]="{'color': 'red'}"
+      *ngIf="settings.controls.primer_concentration.errors">
+      Value has to in range 0.05 to 5 μM
+    </mat-hint>
+  </mat-form-field>
+  <br><br>
+  <mat-form-field>
+    <input matInput
+      formControlName="sodium_concentration"
+      type="number"
+      placeholder="Sodium Concentration (mM)"
+      >
+    <mat-hint
+      align="start"
+      [ngStyle]="{'color': 'red'}"
+      *ngIf="settings.controls.sodium_concentration.errors">
+      Value has to in range 10 to 150 mM
+    </mat-hint>
+  </mat-form-field>
+  <br><br>
+  <mat-checkbox
+      formControlName="circular_output"
+      type="checkbox"
+      >Circular output
+  </mat-checkbox>
+</form>

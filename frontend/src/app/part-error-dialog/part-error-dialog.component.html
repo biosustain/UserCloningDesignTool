@@ -1,0 +1,43 @@
+<h2 mat-dialog-title>
+  Errors found in part {{ data.part_name }}
+</h2>
+<mat-dialog-content>
+  <div class="container">
+    <mat-table #table [dataSource]="dataSource" class="table">
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+        <mat-cell *matCellDef="let element"> 
+            {{element.name.value}} <mat-icon color="warn" *ngIf=element.name.error matTooltip="No support for dynamic tooltips, yet">warning</mat-icon>
+          </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="strand">
+        <mat-header-cell *matHeaderCellDef> Strand </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          {{element.strand.value}} <mat-icon color="warn" *ngIf=element.strand.error matTooltip="No support for dynamic tooltips, yet">warning</mat-icon>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="genbankStart">
+        <mat-header-cell *matHeaderCellDef> Location start</mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          {{element.locations[0].genbankStart.value}} <mat-icon color="warn" *ngIf=element.locations[0].genbankStart.error matTooltip="No support for dynamic tooltips, yet">warning</mat-icon>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="end">
+        <mat-header-cell *matHeaderCellDef> Location end </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          {{element.locations[0].end.value}} <mat-icon color="warn" *ngIf=element.locations[0].end.error matTooltip="No support for dynamic tooltips, yet">warning</mat-icon>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>    
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="openInIce()">Open part in ICE</button>
+  <button mat-button mat-dialog-close>Close</button>
+</mat-dialog-actions>

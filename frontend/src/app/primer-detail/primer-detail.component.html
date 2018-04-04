@@ -1,0 +1,75 @@
+<!-- <td-expansion-panel-group> -->
+  <td-expansion-panel *ngFor="let primer of primers">
+    <ng-template td-expansion-panel-label>
+      <span class="project-header">
+        Primer for {{primer.name}}
+      </span>
+    </ng-template>
+    <ng-template td-expansion-panel-sublabel>
+      <span class='primer-span'>
+        <b>Forward: </b> {{primer.forward_primer.sequence}}<br>
+        <b>Backward:</b> {{primer.backward_primer.sequence}}
+      </span>
+    </ng-template>
+    <td-expansion-summary>
+
+    </td-expansion-summary>
+    <mat-list>
+      <h3 matSubheader>Forward primer</h3>
+      <mat-list>
+        <mat-list-item>
+          Sequence {{primer.forward_primer.sequence}}
+        </mat-list-item>
+        <mat-list-item>
+          Melting Temperature {{primer.forward_primer.Tm}}
+        </mat-list-item>
+        <mat-list-item>
+          GC Content percentage {{primer.forward_primer.GC_content_percent}}
+        </mat-list-item>
+        <mat-list-item>
+          GC clamp present at 3' end? {{primer.forward_primer.GC_clamp}}
+        </mat-list-item>
+        <mat-list-item>
+          3 G/C out of last 5 bases at 3' end? {{primer.forward_primer.Over_3_gc}}
+        </mat-list-item>
+        <mat-list-item>
+          No primer dimer formation in primer pair? {{primer.forward_primer.risk_primer_dimer}}
+        </mat-list-item>
+        <mat-list-item>
+          No intra-primer homology {{primer.forward_primer.risk_intraprimer}}
+        </mat-list-item>
+        <mat-list-item>
+          PolyN stretches {{primer.forward_primer.polyN_stretch}}
+        </mat-list-item>
+      </mat-list>
+      <mat-divider></mat-divider>
+      <h3 matSubheader>Backward primer</h3>
+      <mat-list>
+        <mat-list-item>
+          Sequence {{primer.backward_primer.primer}}
+        </mat-list-item>
+        <mat-list-item>
+          Melting Temperature {{primer.backward_primer.Tm}}
+        </mat-list-item>
+        <mat-list-item>
+          GC Content percentage {{primer.backward_primer.GC_content_percent}}
+        </mat-list-item>
+        <mat-list-item>
+          GC clamp present at 3' end? {{primer.backward_primer.GC_clamp}}
+        </mat-list-item>
+        <mat-list-item>
+          3 G/C out of last 5 bases at 3' end? {{primer.backward_primer.Over_3_gc}}
+        </mat-list-item>
+        <mat-list-item>
+          No primer dimer formation in primer pair? {{primer.backward_primer.risk_primer_dimer}}
+        </mat-list-item>
+        <mat-list-item>
+          No intra-primer homology {{primer.backward_primer.risk_intraprimer}}
+        </mat-list-item>
+        <mat-list-item>
+          PolyN stretches {{primer.backward_primer.polyN_stretch}}
+        </mat-list-item>
+      </mat-list>
+    </mat-list>
+  </td-expansion-panel>
+<!-- </td-expansion-panel-group> -->

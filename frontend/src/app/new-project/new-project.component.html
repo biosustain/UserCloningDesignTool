@@ -1,0 +1,106 @@
+<div fxLayout='row' fxLayoutAlign='center'>
+  <div fxFlex='75'>
+    <td-layout-card-over cardTitle="Create a single new project">
+      <!-- TODO: Change all warnings to mat-hint -->
+      <td-steps mode="horizontal">
+        <td-step #step1 
+          label="General information"
+          sublabel="Give the project a name and a description"
+          [active]="activePanel===0"
+          [state]="stateStep[0]">
+          <form
+            [formGroup]="newProjectForm">
+            <mat-form-field>
+              <input matInput
+                formControlName="name"
+                type="text"
+                placeholder="Project name">
+            </mat-form-field>
+            <small
+              *ngIf="!newProjectForm.get('name').valid && 
+                     (newProjectForm.get('name').dirty ||
+                      newProjectForm.get('name').touched)"
+              class="text-danger"
+              color='warn'>
+                Name is required (5 to 50 characters).
+            </small>
+            <br>
+            <mat-form-field>
+              <textarea matInput
+                formControlName="description"
+                placeholder="Project description (optional)"></textarea>
+            </mat-form-field>
+            <ng-template td-step-actions>
+              <button mat-raised-button
+                color="primary"
+                [disabled]="!firstTabValid()"
+                (click)="step2.open(); toggleState(0)">Next</button>
+            </ng-template>
+          </form>
+        </td-step>
+
+        <!-- TODO: Add a better "add" button to the part step in the wizards -->
+        <td-step #step2
+          label="Parts"
+          sublabel="Pick some parts from the ICE database"
+          [active]="this.activePanel===1"
+          [state]="stateStep[1]">
+          <app-part-selector
+            #partSelector
+            [PartForm]="newProjectForm.controls.parts"
+            [title]="'Parts'">
+          </app-part-selector>
+          <ng-template td-step-actions>
+            <button mat-raised-button
+              color="primary"
+              (click)="partSelector.addPart()">
+              Add part
+            </button>
+            <button mat-raised-button
+              color="primary"
+              [disabled]="!secondTabValid()"
+              (click)="step3.open(); toggleState(1)">Next</button>
+          </ng-template>
+        </td-step>
+
+        <td-step #step3
+          label="Settings"
+          sublabel="Set the settings that Amuser will use to create the primers"
+          [active]="this.activePanel===2"
+          [state]="stateStep[2]">
+          <app-amuser-settings 
+            [settings]="newProjectForm.controls.amusercloning">
+          </app-amuser-settings>
+          <ng-template td-step-actions>
+            <button mat-raised-button
+              color="primary"
+              [disabled]="!firstTabValid()"
+              (click)="step4.open(); toggleState(2)">Next</button>
+          </ng-template>
+        </td-step>
+
+        <td-step #step4
+        label="Review and submit"
+        sublabel="One last check to confirm everything is as you want it"
+        [active]="this.activePanel===3"
+        [state]="stateStep[3]">
+          <div
+            fxLayout='row' 
+            fxLayoutAlign="start"
+            fxLayoutGap="10px"
+            fxLayoutWrap>
+            <app-project-card
+              [project]="getProject()">
+            </app-project-card>  
+          </div>
+          <ng-template td-step-actions>
+            <button mat-raised-button
+              color="primary"
+              [disabled]="!thirdTabValid()"
+              (click)="submit(); toggleState(3)">Submit</button>
+          </ng-template>
+        </td-step>
+      </td-steps>
+    </td-layout-card-over>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+<div fxLayout='row' fxLayoutAlign='center'>
+  <div fxFlex='75'>
+    <div fxLayout='row' fxLayoutAlign="space-between stretch">
+      <mat-card fxFlex="45" class="single-new">
+        <mat-toolbar color="primary">
+          <span>Create a single new project</span>
+        </mat-toolbar>
+        <mat-card-content>
+          <p>
+            If you only need a single project this will take you through the steps needed. This option makes it possible to add a high level of detail to the description of the project and it is simple to achieve a desired result, but it is slow to create.
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button routerLink="/new_project">Select</button>
+        </mat-card-actions>
+      </mat-card>
+
+      <mat-card fxFlex="45" class="multiple-new">
+        <mat-toolbar color="primary">
+          <span>Create several new projects</span>
+        </mat-toolbar>
+        <mat-card-content>
+          <p>
+            When you need to create a lot of projects quickly, this is the way to go. It lets you choose what combination of parts you would like in each position and then makes all possible combination. It makes it possible to create a huge number of projects at once, but comes at a cost of the detail you can add to each project.
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button routerLink="/combinatorial">Select</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,51 @@
+<div class='containerX'>
+  <div fxLayout='row' fxLayoutAlign='center'>
+    <div fxFlex='75'>
+      <div fxLayout='row' fxLayoutAlign="space-around stretch">
+        <mat-card fxFlex class="welcome-card">
+          <mat-card-content class="browse-projects">
+            <div #componentBlock class="welcome-message">
+
+            </div>
+          </mat-card-content>
+          <mat-card-actions>
+          </mat-card-actions>
+        </mat-card>
+      </div><br>
+
+      <div fxLayout='row' fxLayoutAlign="space-between stretch">
+        <mat-card fxFlex="45">
+          <mat-toolbar color="primary" [class.is-active]="browse_active">
+            <span>Browse existing projects</span>
+          </mat-toolbar>
+          <mat-card-content>
+            <p>
+              This option lets you browse and search already created projects. A number of filters can be applied to the search to make sure you find the project you are looking for.
+            </p>
+            <br>
+            <br>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button routerLink="/browse">Select</button>
+          </mat-card-actions>
+        </mat-card>
+
+        <mat-card fxFlex="45">
+          <mat-toolbar color="primary" [class.is-active]="browse_active">
+            <span>Create new projects</span>
+          </mat-toolbar>
+          <mat-card-content>
+            <p>
+              Create one or several projects
+            </p>
+            <br>
+            <br>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button routerLink="/create_projects">Select</button>
+          </mat-card-actions>
+        </mat-card>
+      </div><br>
+    </div>
+  </div>
+</div>
