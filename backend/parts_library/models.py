@@ -4,7 +4,6 @@ import json
 
 import requests
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
-
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
 
@@ -19,7 +18,7 @@ def load_json_object(json_obj):
 class PartHandler(models.Model):
     '''Intermediary model between the project and class.
     It is here to decouple the project and the parts'''
-    _project = models.OneToOneField(Project, related_name='parthandler')
+    _project = models.OneToOneField(Project, related_name='parthandler', on_delete=models.CASCADE)
 
     @property
     def part_list(self):
@@ -28,7 +27,7 @@ class PartHandler(models.Model):
 
 class Part(models.Model):
     '''Stores some simple information about the part.'''
-    _handler = models.ForeignKey(PartHandler, related_name='parts')
+    _handler = models.ForeignKey(PartHandler, related_name='parts', on_delete=models.CASCADE)
     order = models.PositiveIntegerField()
     ice_id = models.IntegerField()
     ice_name = models.CharField(max_length=200)

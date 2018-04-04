@@ -21,8 +21,7 @@ class IceUserProfile(models.Model):
 
     # NOTE: The ice_token field is set in the login signal found in signals.py
     ice_token = models.CharField(max_length=50, blank=True, null=True)
-    ice_host = models.CharField(
-        max_length=50, default='ice.ebdrup.biosustain.dtu.dk')
+    ice_host = models.CharField(max_length=50, default='ice.ebdrup.biosustain.dtu.dk')
     ice_port = models.IntegerField(default=443)
 
     _ice_comm = None

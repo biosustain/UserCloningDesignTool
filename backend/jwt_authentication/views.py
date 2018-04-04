@@ -10,7 +10,7 @@ class SignalObtainJSONWebToken(ObtainJSONWebToken):
         return response
 
 
-class InvalidateJSONWebToken():
+class InvalidateJSONWebToken:
 
     def post(self, request, *args, **kwargs):
         pass

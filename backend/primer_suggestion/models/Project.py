@@ -11,11 +11,9 @@ class Project(models.Model):
     last_modified = models.DateTimeField(auto_now=True)
     description = models.TextField(default='', blank=True)
     ice_id = models.PositiveIntegerField(default=0, blank=True)
-    amusercloning = models.OneToOneField(AmuserCloning, related_name='project')
-    combinatorial = models.ForeignKey(
-        CombinatorialProject, blank=True, null=True, related_name='projects')
-    user = models.ForeignKey(
-        User, blank=True, null=True, on_delete=models.CASCADE)
+    amusercloning = models.OneToOneField(AmuserCloning, related_name='project', on_delete=models.CASCADE)
+    combinatorial = models.ForeignKey(CombinatorialProject, blank=True, null=True, related_name='projects', on_delete=models.CASCADE)
+    user = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)
 
     def __str__(self):
         return(self.name)

@@ -1,4 +1,4 @@
-class UpdateSerializedDataWithResult():
+class UpdateSerializedDataWithResult:
     def __init__(self, report_dict, serialized_data, data_type):
         '''data_type should be either "combinatorial" or "project"'''
         self.report_dict = report_dict

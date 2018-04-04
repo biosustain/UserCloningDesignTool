@@ -1,6 +1,7 @@
 import re
 import json
 
+
 # NOTE: an entire class might be overkill. If performance drops try to profile this
 class AmuserParser(object):
     '''Bundled functions to parse the amuser report into different formats'''

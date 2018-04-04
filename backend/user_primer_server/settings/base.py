@@ -14,7 +14,7 @@ import os
 import datetime
 import ldap
 import logging
-from django_auth_ldap.config import LDAPSearch, ActiveDirectoryGroupType, GroupOfNamesType, MemberDNGroupType
+from django_auth_ldap.config import LDAPSearch, ActiveDirectoryGroupType
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_extensions',
     'primer_suggestion',
     'parts_library',
     'jwt_authentication',
@@ -51,7 +50,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
+    #'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -158,21 +157,24 @@ JWT_AUTH = {
 }
 
 STATIC_URL = '/static/'
-STATIC_ROOT = "./static/"
+STATIC_ROOT = './static/'
 
+#STATICFILES_DIRS = ["./static_root/"]
+
+#logging setup
 log = logging.getLogger(__name__)
-min_level = 'INFO'
-min_django_level = 'INFO'
+min_level = 'WARNING'
+min_django_level = 'WARNING'
 
+# logging dictConfig configuration
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,  # keep Django's default loggers
     'formatters': {
         # see full list of attributes here:
         # https://docs.python.org/3/library/logging.html#logrecord-attributes
-        'colered_verbose': {
-            '()': 'colorlog.ColoredFormatter',
-            'format': "%(log_color)s%(levelname)-8s%(red)s%(module)-8s%(reset)s %(blue)s%(message)s"
+        'verbose': {
+            'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
         },
         'simple': {
             'format': '%(levelname)s %(message)s'
@@ -195,7 +197,6 @@ LOGGING = {
         'console': {
             'level': min_level,  # this level or higher goes to the console
             'class': 'logging.StreamHandler',
-            'formatter': 'colered_verbose'
         },
     },
     'loggers': {

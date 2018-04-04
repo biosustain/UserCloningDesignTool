@@ -10,10 +10,8 @@ class CombinatorialProject(models.Model):
     created_date = models.DateTimeField(auto_now_add=True)
     last_modified = models.DateTimeField(auto_now=True)
     parts = JSONField(default=dict)
-    amusercloning = models.OneToOneField(
-        AmuserCloning, related_name='combinatorial')
-    user = models.ForeignKey(
-        User, blank=True, null=True, on_delete=models.CASCADE)
+    amusercloning = models.OneToOneField(AmuserCloning, related_name='combinatorial', on_delete=models.CASCADE)
+    user = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)
 
     class Meta:
         ordering = ['created_date']

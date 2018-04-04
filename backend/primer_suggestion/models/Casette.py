@@ -7,5 +7,4 @@ class Casette(models.Model):
     name = models.CharField(max_length=50, unique=True)
     description = models.TextField()
     cmd_string = models.CharField(max_length=100)
-    user = models.ForeignKey(
-        User, blank=True, null=True, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)

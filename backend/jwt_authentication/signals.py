@@ -1,7 +1,6 @@
 from .models import IceUserProfile
 from django.db.models.signals import post_save
 from django.contrib.auth.models import User
-from django.contrib.auth.backends import ModelBackend
 from django.contrib.auth.signals import user_logged_in, user_logged_out
 from django.utils.datastructures import MultiValueDictKeyError
 from django_auth_ldap.backend import ldap_error

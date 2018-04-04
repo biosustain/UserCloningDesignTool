@@ -1,8 +1,5 @@
 from rest_framework import serializers
-from .service import PartService
 from .models import Part, PartHandler
-from ice import comm, settings
-from urllib.error import HTTPError
 
 
 class PartSerializer(serializers.HyperlinkedModelSerializer):

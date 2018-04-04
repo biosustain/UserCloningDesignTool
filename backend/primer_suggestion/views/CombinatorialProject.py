@@ -1,6 +1,4 @@
-from django.shortcuts import get_object_or_404
 from django.http import HttpResponse
-from wsgiref.util import FileWrapper
 
 from ..models import CombinatorialProject, Project
 from ..serializers import CombinatorialProjectSerializer

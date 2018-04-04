@@ -18,7 +18,6 @@ from rest_framework.decorators import list_route, detail_route
 
 from rest_framework_csv import renderers as r
 
-from collections import OrderedDict
 import json
 
 

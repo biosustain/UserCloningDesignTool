@@ -2,14 +2,14 @@ FROM python:latest
 ENV PYTHONUNBUFFERED 1
 
 # Requirements for ldap
-RUN apt-get update && apt-get install -y libsasl2-dev python-dev libldap2-dev libssl-dev
+RUN apt-get update && apt-get dist-upgrade -y && apt-get autoremove -y && apt-get install -y libsasl2-dev libldap2-dev
 
 # Copy uwsgi settings
 RUN mkdir /etc/uwsgi/
 COPY confs/uwsgi/uwsgi.ini /etc/uwsgi/
 
 # Python requirements
-RUN pip install git+https://github.com/RavensburgOP/ice-communication.git
+RUN pip install -U pip setuptools wheel
 
 WORKDIR /var/www/
 COPY confs/requirements.txt /var/www/
