@@ -133,7 +133,7 @@ class UserCloningReportGenerator(object):
         return errors
 
     def generate_phuser_cmd_string(self, amuser_cloning):
-        base_cmd = "perl static/amuser/AMUSER_v39.pl"
+        base_cmd = "perl AMUSER_v39.pl"
         infile_cmd = " -i " + self._fasta_named_tempfile.name
         repfile_cmd = " -r " + self._phuser_report_tempfile.name
         minimum_cmd = base_cmd + infile_cmd + repfile_cmd
