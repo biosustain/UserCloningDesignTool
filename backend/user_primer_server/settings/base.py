@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'primer_suggestion',
     'parts_library',
@@ -49,8 +50,8 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    #'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -156,10 +157,10 @@ JWT_AUTH = {
     'JWT_RESPONSE_PAYLOAD_HANDLER': 'jwt_authentication.utils.jwt_response_payload_handler',
 }
 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+WHITENOISE_ROOT = './dist'
 STATIC_URL = '/static/'
-STATIC_ROOT = './static/'
-
-#STATICFILES_DIRS = ["./static_root/"]
+STATIC_ROOT = './static'
 
 #logging setup
 log = logging.getLogger(__name__)

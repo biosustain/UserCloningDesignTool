@@ -15,12 +15,12 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 import django.contrib.auth.views
+from django.views.generic import RedirectView
 from rest_framework_jwt.views import refresh_jwt_token, verify_jwt_token
 from jwt_authentication.views import SignalObtainJSONWebToken
 from rest_framework import routers
 import primer_suggestion.views as psviews
 import parts_library.views as plviews
-
 
 router = routers.DefaultRouter()
 router.register(r'parts', plviews.PartApiDetail)
@@ -33,15 +33,14 @@ router.register(r'combinatorial', psviews.CombinatorialProjectApiList)
 router.register(r'combinatorial', psviews.CombinatorialProjectApiDetail)
 router.register(r'cassete', psviews.CasetteApiDetail)
 
-
 urlpatterns = [
-    url(r'^rest/admin/', admin.site.urls),
-    url(r'^rest/accounts/login/$', django.contrib.auth.views.login, name='login'),
-    url(r'^rest/api/ice-parts[/]?$', plviews.IcePartApiList.as_view(), name='parts'),
-    url(r'^rest/api/', include(router.urls)),
-    url(r'^rest/api/token-auth/', SignalObtainJSONWebToken.as_view()),
-    url(r'^rest/api/token-refresh/', refresh_jwt_token),
-    url(r'^rest/api/token-verify/', verify_jwt_token),
-    url(r'^rest/api-auth/', include('rest_framework.urls',
-                                    namespace='rest_framework')),
+	url(r'^rest/admin/', admin.site.urls),
+	url(r'^rest/accounts/login/$', django.contrib.auth.views.login, name='login'),
+	url(r'^rest/api/ice-parts[/]?$', plviews.IcePartApiList.as_view(), name='parts'),
+	url(r'^rest/api/', include(router.urls)),
+	url(r'^rest/api/token-auth/', SignalObtainJSONWebToken.as_view()),
+	url(r'^rest/api/token-refresh/', refresh_jwt_token),
+	url(r'^rest/api/token-verify/', verify_jwt_token),
+	url(r'^rest/api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+	url('^$', RedirectView.as_view(url='/index.html'), name='index'),
 ]

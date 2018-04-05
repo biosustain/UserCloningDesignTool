@@ -7,3 +7,5 @@ biopython==1.71
 uwsgi==2.0.17
 psycopg2==2.7.4
 requests==2.18.4
+brotlipy==0.7.0
+whitenoise==3.3.1
