@@ -9,9 +9,6 @@ import { Project } from '../project';
 
 import { Part } from '../part';
 
-
-import * as D3 from 'd3';
-
 @Component({
   selector: 'app-sequence-selector',
   templateUrl: './sequence-selector.component.html',
