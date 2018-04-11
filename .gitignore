@@ -68,7 +68,6 @@ coverage.xml
 crashlytics-build.properties
 crashlytics.properties
 develop-eggs/
-dist/
 docs/_build/
 downloads/
 eggs/
@@ -79,7 +78,6 @@ fabric.properties
 frontend/.sass-cache
 frontend/connect.lock
 frontend/coverage
-frontend/dist/
 frontend/dist-server
 frontend/e2e/*.js
 frontend/e2e/*.map
