@@ -3,9 +3,7 @@ version: '3'
 services:
     backend:
         build: ./backend
-        entrypoint: /usr/local/bin/uwsgi --ini /var/www/server/uwsgi.ini
-        environment:
-            - DJANGO_SETTINGS_MODULE=user_primer_server.settings.docker
+        entrypoint: bash -c "python manage.py makemigrations && python manage.py migrate && /usr/local/bin/uwsgi --ini /var/www/server/uwsgi.ini"
         ports:
           - "8008:8000"
         depends_on:

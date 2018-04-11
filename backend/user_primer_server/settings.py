@@ -84,7 +84,31 @@ WSGI_APPLICATION = 'user_primer_server.wsgi.application'
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
 # Databases are defined in child settings (docker, local, etc)
+testing = False
+if testing:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'dev_db',
+            'USER': 'django',
+            'PASSWORD': 'mydb123',
+            'HOST': 'localhost',
+            'PORT': '',
+        }
+    }
 
+    # We don't need a fancy password, when we are only testing the functionality
+    AUTH_PASSWORD_VALIDATORS = []
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'postgres',
+            'USER': 'postgres',
+            'HOST': 'db',
+            'PORT': 5432,
+        },
+    }
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
 AUTH_LDAP_MIRROR_GROUPS = True

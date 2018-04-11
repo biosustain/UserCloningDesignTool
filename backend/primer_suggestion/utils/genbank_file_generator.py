@@ -3,7 +3,7 @@ import operator
 from Bio import SeqIO, SeqFeature
 
 
-class GenbankFileGenerator():
+class GenbankFileGenerator:
     def __init__(self, query, ice_service):
         self.query = query
         self.query_type = self.determine_project_or_combinatorial(query)
@@ -34,8 +34,7 @@ class GenbankFileGenerator():
 
         try:
             ice_ids = list(set(self.get_ice_ids_from_query()))
-            genbank_dict = self.ice_service.get_multiple_biopy_objects(
-                ice_ids)
+            genbank_dict = self.ice_service.get_multiple_biopy_objects(ice_ids)
             return genbank_dict
         except Exception as e:
             raise e

@@ -72,8 +72,7 @@ class PartService(object):
 
     def get_sequence_and_feats(self, part_id):
         '''The entry info and the sequence and feats are seperate calls in ice'''
-        seq_and_feats = json.loads(
-            self.ice_comm.get_ice_part_sequence(part_id))
+        seq_and_feats = json.loads(self.ice_comm.get_ice_part_sequence(part_id))
         seq_and_feats = self.validate_seq_and_feats(seq_and_feats)
         return seq_and_feats
 
