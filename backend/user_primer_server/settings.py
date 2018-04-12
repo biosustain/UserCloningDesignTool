@@ -84,16 +84,15 @@ WSGI_APPLICATION = 'user_primer_server.wsgi.application'
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
 # Databases are defined in child settings (docker, local, etc)
-testing = False
+testing = True
 if testing:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'dev_db',
-            'USER': 'django',
-            'PASSWORD': 'mydb123',
+            'NAME': 'usercloningdb',
+            'USER': 'passispass',
+            'PASSWORD': 'pass',
             'HOST': 'localhost',
-            'PORT': '',
         }
     }
 

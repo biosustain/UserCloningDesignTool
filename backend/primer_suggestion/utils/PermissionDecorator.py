@@ -1,6 +1,9 @@
 def user_permission(cls):
-    '''Overides the get_queryset method on a view class to only
-    return models associated with the user'''
+    """
+    Overides the get_queryset method on a view class to only return models associated with the user
+    :param cls:
+    :return:
+    """
     def get_queryset(self):
         return self.queryset.filter(user=self.request.user)
 

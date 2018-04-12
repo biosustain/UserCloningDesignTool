@@ -16,8 +16,10 @@ def load_json_object(json_obj):
 
 # Create your models here.
 class PartHandler(models.Model):
-    '''Intermediary model between the project and class.
-    It is here to decouple the project and the parts'''
+    """
+    Intermediary model between the project and class.
+    It is here to decouple the project and the parts
+    """
     _project = models.OneToOneField(Project, related_name='parthandler', on_delete=models.CASCADE)
 
     @property
@@ -26,7 +28,7 @@ class PartHandler(models.Model):
 
 
 class Part(models.Model):
-    '''Stores some simple information about the part.'''
+    """Stores some simple information about the part"""
     _handler = models.ForeignKey(PartHandler, related_name='parts', on_delete=models.CASCADE)
     order = models.PositiveIntegerField()
     ice_id = models.IntegerField()

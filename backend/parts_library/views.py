@@ -2,14 +2,14 @@ from parts_library.models import Part, PartHandler
 from parts_library.service import PartService
 
 # This is for the REST API
-from .serializers import PartHandlerSerializer, PartSerializer
+from parts_library.serializers import PartHandlerSerializer, PartSerializer
 from rest_framework import permissions, status
 from rest_framework.response import Response
 from rest_framework import generics, viewsets
 from rest_framework.views import APIView
 
 
-class PartHandler(viewsets.ViewSetMixin, generics.ListCreateAPIView):
+class PartHandlerViewSet(viewsets.ViewSetMixin, generics.ListCreateAPIView):
     serializer_class = PartHandlerSerializer
     queryset = PartHandler.objects.all()
     permission_classes = [permissions.AllowAny]

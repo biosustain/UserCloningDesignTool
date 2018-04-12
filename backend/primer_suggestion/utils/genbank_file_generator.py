@@ -70,7 +70,7 @@ class GenbankFileGenerator:
         return genbank_file
 
     def write_genbank_to_temp_file(self, biopy_obj):
-        '''Write a genbank file of the final assembly'''
+        """Write a genbank file of the final assembly"""
         genbank_file = open(f'/tmp/{self.query.name}.gb', 'w+')
         SeqIO.write(biopy_obj, genbank_file, "genbank")
         genbank_file.seek(0)

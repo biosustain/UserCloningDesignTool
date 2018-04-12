@@ -3,7 +3,7 @@ from subprocess import Popen, PIPE
 from shlex import split as shsplit
 import tempfile
 
-from ..utils import AmuserParser
+from primer_suggestion.utils.AmuserParser import AmuserParser
 
 
 class UserCloningReportGenerator(object):
